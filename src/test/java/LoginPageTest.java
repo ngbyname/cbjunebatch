@@ -3,8 +3,13 @@ import org.testng.annotations.Test;
 
 public class LoginPageTest extends Driver {
 
-    @Test
-    public void test(){
-
+    @Test(priority = 1)
+    public void test() {
+        try {
+            pages.getLandingPage().clickCookiesModal();
+            pages.getLandingPage().clickWeatherTab();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

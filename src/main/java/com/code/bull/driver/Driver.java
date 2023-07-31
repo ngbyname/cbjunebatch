@@ -23,19 +23,19 @@ public class Driver {
     public static WebDriver driver;
     public static String BASE_URL;
 
-    public static ConstantUtils constants;
+    public static ConstantUtils constants = ConstantUtils.getInstance();
 
     public static PageCollections pages;
 
 
-    @BeforeSuite
-    private void setup() {
+    @BeforeSuite(alwaysRun = true)
+    public void setup() {
         envSetup();
         browser();
     }
 
     @BeforeClass
-    private void pageSetup() {
+    public void pageSetup() {
         try {
             initializePage();
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class Driver {
     }
 
     @AfterSuite
-    private void closeSetup() {
+    public void closeSetup() {
         driver.close();
         if (driver != null) {
             driver.quit();
