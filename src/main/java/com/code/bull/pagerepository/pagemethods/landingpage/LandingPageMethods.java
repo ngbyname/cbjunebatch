@@ -18,22 +18,13 @@ public class LandingPageMethods extends BasePage {
      * This method is used to click on cookies modal
      */
     public void clickCookiesModal() {
-        if (driver.findElement(pageElements.cookiesModal).isDisplayed()) {
-//            driver.findElement(pageElements.cookiesModal).click();
-            click(pageElements.cookiesModal);
-        } else {
-            System.out.println("cookies modal accept button is not visible");
-        }
+        click(pageElements.cookiesModal);
     }
 
     /**
      * This method is used to click on weather tab
      */
     public void clickWeatherTab() {
-        if (driver.findElement(pageElements.weatherDataTab).isDisplayed()) {
-            driver.findElement(pageElements.weatherDataTab).click();
-        } else {
-            System.out.println("weather data tab is not visible");
-        }
+        click(pageElements.weatherDataTab);
     }
 }

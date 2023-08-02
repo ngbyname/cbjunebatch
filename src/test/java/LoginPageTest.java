@@ -8,6 +8,8 @@ public class LoginPageTest extends Driver {
         try {
             pages.getLandingPage().clickCookiesModal();
             pages.getLandingPage().clickWeatherTab();
+            pages.getWeatherDataPage().enterCityName("Gurgaon");
+            pages.getWeatherDataPage().clickSearchBtn();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

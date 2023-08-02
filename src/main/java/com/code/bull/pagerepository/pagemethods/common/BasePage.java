@@ -12,16 +12,34 @@ public class BasePage extends Driver {
      * @param elementLocation the web element location/address
      */
     public void click(By elementLocation) {
-        driver.findElement(elementLocation).click();
+        if (Boolean.TRUE.equals(isDisplayed(elementLocation)))
+            driver.findElement(elementLocation).click();
+        else
+            System.out.println("Web element is NOT displayed");
     }
 
     /**
-     * This method is used to check wheather web element is displayed or not
+     * This method is used to check whether web element is displayed or not
      *
      * @param elementLocation the web element location
      * @return true/false
      */
     public Boolean isDisplayed(By elementLocation) {
         return driver.findElement(elementLocation).isDisplayed();
+    }
+
+    /**
+     * This method is used to enter text in any text box
+     *
+     * @param elementLocation the locator
+     * @param textToEnter     the text
+     */
+    public void enterText(By elementLocation, String textToEnter, String failMsg) {
+        if (Boolean.TRUE.equals(isDisplayed(elementLocation))) {
+            driver.findElement(elementLocation).clear();
+            driver.findElement(elementLocation).sendKeys(textToEnter);
+        } else {
+            System.out.println(failMsg);
+        }
     }
 }

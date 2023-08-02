@@ -4,9 +4,10 @@ import org.openqa.selenium.By;
 
 /**
  * 1. open this url - https://www.visualcrossing.com/ --Done
- * 2. Go to Weather data tab --Done
- * 3. Search for your city
- * 4. and hit search icon
+ * 2. accept cookies modal - Done
+ * 3. Go to Weather data tab --Done
+ * 4. Search for your city - Done
+ * 4. and hit search icon  - Done
  * 5. and validate all the weather history for your city
  */
 
