@@ -10,7 +10,7 @@ public class LandingPageMethods extends BasePage {
     LandingPageElements pageElements;
 
     public LandingPageMethods(WebDriver driver) {
-        //super(driver);
+        super(driver);
         pageElements = PageFactory.initElements(driver, LandingPageElements.class);
     }
 

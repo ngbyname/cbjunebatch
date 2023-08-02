@@ -10,7 +10,7 @@ public class WeatherDataTabPage extends BasePage {
     WeatherDataTabElements tabElements;
 
     public WeatherDataTabPage(WebDriver driver) {
-        //super(driver);
+        super(driver);
         tabElements = PageFactory.initElements(driver, WeatherDataTabElements.class);
     }
 

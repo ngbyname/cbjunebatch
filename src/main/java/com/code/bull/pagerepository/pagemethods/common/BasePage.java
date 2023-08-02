@@ -2,8 +2,17 @@ package com.code.bull.pagerepository.pagemethods.common;
 
 import com.code.bull.driver.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 public class BasePage extends Driver {
+
+    public BasePage(WebDriver driver){
+        Driver.driver=driver;
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+    }
 
 
     /**

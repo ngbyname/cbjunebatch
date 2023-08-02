@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 public class Driver {
@@ -22,10 +23,9 @@ public class Driver {
     private static String env = System.getProperty("env");
     public static WebDriver driver;
     public static String BASE_URL;
-
     public static ConstantUtils constants = ConstantUtils.getInstance();
-
     public static PageCollections pages;
+    public static StringBuilder assertCheck;
 
 
     @BeforeSuite(alwaysRun = true)
@@ -41,6 +41,11 @@ public class Driver {
         } catch (Exception e) {
             e.getMessage();
         }
+    }
+
+    @BeforeMethod
+    public void methodLevelSetup() {
+        assertCheck = new StringBuilder();
     }
 
     @AfterSuite
