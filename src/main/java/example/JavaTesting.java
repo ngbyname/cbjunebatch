@@ -32,7 +32,7 @@ public class JavaTesting {
         a = a + " " + b;
         System.out.println("Print after String operation: " + a);
 
-        StringBuilder c = null;
+        StringBuilder c = new StringBuilder();
         c.append("true");
         System.out.println("before operation: " + c);
         c.append("false");

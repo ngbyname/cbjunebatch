@@ -1,5 +1,7 @@
 package com.code.bull.commonutils.applicationutils.constants;
 
+import com.code.bull.commonutils.commonlib.CommonLib;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,13 +30,14 @@ public class ConstantUtils {
                 inFile = new Scanner(new FileReader(file));
                 inFile.next();
             } catch (FileNotFoundException ex) {
-                ex.getMessage();
+                CommonLib.error(ex.getMessage());
+
             }
             try {
                 InputStream inputStream = Files.newInputStream(Paths.get(file));
                 prop.load(inputStream);
             } catch (IOException ex) {
-                ex.getMessage();
+                CommonLib.error(ex.getMessage());
             }
         });
     }

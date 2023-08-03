@@ -1,8 +1,10 @@
 package com.code.bull.driver;
 
 
+import com.code.bull.commonutils.actions.AssertActions;
 import com.code.bull.commonutils.applicationutils.constants.ApplicationConstants;
 import com.code.bull.commonutils.applicationutils.constants.ConstantUtils;
+import com.code.bull.commonutils.commonlib.CommonLib;
 import com.code.bull.pagerepository.pagemethods.common.PageCollections;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +28,7 @@ public class Driver {
     public static ConstantUtils constants = ConstantUtils.getInstance();
     public static PageCollections pages;
     public static StringBuilder assertCheck;
-
+    //public static AssertActions actions = new AssertActions();
 
     @BeforeSuite(alwaysRun = true)
     public void setup() {
@@ -39,7 +41,7 @@ public class Driver {
         try {
             initializePage();
         } catch (Exception e) {
-            e.getMessage();
+            CommonLib.error(e.getMessage());
         }
     }
 
@@ -92,7 +94,7 @@ public class Driver {
                     break;
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            CommonLib.error(ex.getMessage());
         }
     }
 
