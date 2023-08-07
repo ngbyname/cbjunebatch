@@ -8,29 +8,28 @@ public class LoginPageTest extends Driver {
 
     private static final String CITY_NAME = constants.getValue(ApplicationConstants.CITY_NAME);
 
+    /**
+     * 1. script is not working with headless -true mode
+     * 2. Logger is not printing in console
+     * 3. default report is not visible
+     * 4. Code walkthrough and definition
+     */
+
     @Test(priority = 1)
-    public void test() {
+    public void testCityWeather() {
         try {
             pages.getLandingPage().clickCookiesModal();
-            /**
-             * 1. To verify after click on cookies modal your url should be this --> https://www.visualcrossing.com/
-             * Actual - Your url
-             * Expected - https://www.visualcrossing.com/
-             * actual == expected --> your test case got passed
-             *
-             * agar actual != expected --> apka test case fail
-             *
-             * apko assert kerna hai ki after click on cookie modal apka url (https://www.visualcrossing.com/) ye hai ya nhi?
-             */
             String currentUrl = pages.getLandingPage().getUrl();
             assertCheck.append(AssertActions.assertEqualString(currentUrl, "https://www.visualcrossing.com/", "Landing Page Opened Successfully", "Landing Page NOT Opened Successfully " + currentUrl));
             pages.getLandingPage().clickWeatherTab();
-            //Assert2
+            String currentUrl1 = pages.getLandingPage().getUrl();
+            assertCheck.append(AssertActions.assertEqualString(currentUrl1, "https://www.visualcrossing.com/weather-data", "Weather Tab Page Opened Successfully", "Weather Tab Page NOT Opened Successfully " + currentUrl1));
             pages.getWeatherDataPage().enterCityName(CITY_NAME);
-            //Assert3
             pages.getWeatherDataPage().clickSearchBtn();
-            //Assert4
-            //Assert5
+            String currentUrl2 = pages.getLandingPage().getUrl();
+            boolean isCityPresent = currentUrl2.contains(CITY_NAME);
+            assertCheck.append(AssertActions.assertEqualBoolean(isCityPresent, true, "Your " + CITY_NAME + " City's weather data shown Successfully", "Your " + CITY_NAME + " City's weather data NOT shown Successfully " + currentUrl2));
+            AssertActions.checkAllAssertCheck(assertCheck);
         } catch (Exception e) {
             CommonLib.error(e.getMessage());
         }

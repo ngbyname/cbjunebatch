@@ -1,7 +1,6 @@
 package com.code.bull.driver;
 
 
-import com.code.bull.commonutils.actions.AssertActions;
 import com.code.bull.commonutils.applicationutils.constants.ApplicationConstants;
 import com.code.bull.commonutils.applicationutils.constants.ConstantUtils;
 import com.code.bull.commonutils.commonlib.CommonLib;
@@ -28,7 +27,6 @@ public class Driver {
     public static ConstantUtils constants = ConstantUtils.getInstance();
     public static PageCollections pages;
     public static StringBuilder assertCheck;
-    //public static AssertActions actions = new AssertActions();
 
     @BeforeSuite(alwaysRun = true)
     public void setup() {
@@ -101,7 +99,7 @@ public class Driver {
     private void browserCapabilities() {
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("window-size=1792,1120");
-        options.setHeadless(false);
+        options.setHeadless(true);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }

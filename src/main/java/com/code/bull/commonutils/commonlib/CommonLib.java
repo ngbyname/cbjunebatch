@@ -11,15 +11,6 @@ public class CommonLib extends Driver {
     private static final Logger log = LogManager.getLogger(MethodHandles.lookup().lookupClass().getSimpleName());
 
     /**
-     * Logger level
-     * 1. info
-     * 2. error
-     * 3. fail
-     * 4. warning
-     * 5. pass
-     */
-
-    /**
      * This method is used to print info message
      *
      * @param msg the msg
@@ -47,4 +38,12 @@ public class CommonLib extends Driver {
     }
 
 
+    /**
+     * This method is used to print pass msg
+     *
+     * @param s the msg
+     */
+    public static void pass(String s) {
+        log.info(s);
+    }
 }

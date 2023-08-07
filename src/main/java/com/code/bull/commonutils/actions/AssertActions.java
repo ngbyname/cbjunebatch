@@ -5,21 +5,6 @@ import org.testng.Assert;
 
 public class AssertActions {
 
-    /**
-     * Assertion - there two types of assertions
-     * 1. Soft assert -
-     * 2. Hard assert
-     * <p>
-     * Assert Example -
-     * 1. boolean comparison
-     * 2. String comparison
-     * 3. integer comparison
-     * 4. double comparison
-     * 5. flot comparison
-     * <p>
-     * a=b --> pass
-     * a!=b --> fail
-     */
     public static Boolean assertFlag = null;
 
     /**
@@ -34,10 +19,10 @@ public class AssertActions {
     public static Boolean assertEqualBoolean(boolean actual, boolean expected, String pass, String fail) {
         assertFlag = false;
         try {
-            Assert.assertEquals(actual, expected, pass);
+            Assert.assertEquals(actual, expected, fail);
             assertFlag = true;
         } catch (Exception e) {
-            CommonLib.error(fail + " " + e.getMessage());
+            CommonLib.error(e.getMessage());
         }
         return assertFlag;
     }
@@ -54,10 +39,10 @@ public class AssertActions {
     public static Boolean assertEqualString(String actual, String expected, String pass, String fail) {
         assertFlag = false;
         try {
-            Assert.assertEquals(actual, expected, pass);
+            Assert.assertEquals(actual, expected, fail);
             assertFlag = true;
         } catch (Exception e) {
-            CommonLib.error(fail + " " + e.getMessage());
+            CommonLib.error(e.getMessage());
         }
         return assertFlag;
     }
@@ -80,6 +65,19 @@ public class AssertActions {
             CommonLib.error(fail + " " + e.getMessage());
         }
         return assertFlag;
+    }
+
+    /**
+     * This method is used to check all assertion are passed or not
+     *
+     * @param assertCheck all assertions status
+     */
+    public static void checkAllAssertCheck(StringBuilder assertCheck) {
+        if (assertCheck.isEmpty() || assertCheck.toString().contains("false")) {
+            Assert.fail();
+        } else {
+            CommonLib.pass("All assertion verified and are passed");
+        }
     }
 
 

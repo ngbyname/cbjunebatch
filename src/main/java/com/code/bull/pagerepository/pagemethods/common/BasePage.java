@@ -1,18 +1,24 @@
 package com.code.bull.pagerepository.pagemethods.common;
 
+import com.code.bull.commonutils.applicationutils.constants.ApplicationConstants;
 import com.code.bull.commonutils.commonlib.CommonLib;
 import com.code.bull.driver.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage extends Driver {
+    static Wait<WebDriver> wait;
 
     public BasePage(WebDriver driver) {
         Driver.driver = driver;
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
+        wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(constants.getValue(ApplicationConstants.GLOBAL_WAIT_TIME))));
     }
 
 
@@ -26,7 +32,7 @@ public class BasePage extends Driver {
             CommonLib.info("Going to click on : " + elementLocation);
             driver.findElement(elementLocation).click();
         } else {
-            CommonLib.error("Web element is NOT displayed");
+            CommonLib.error("Web element :-" + elementLocation + " is NOT displayed");
         }
     }
 
@@ -38,6 +44,7 @@ public class BasePage extends Driver {
      */
     public static Boolean isDisplayed(By elementLocation) {
         CommonLib.info("Going to check if element is displayed or not");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocation));
         return driver.findElement(elementLocation).isDisplayed();
     }
 
