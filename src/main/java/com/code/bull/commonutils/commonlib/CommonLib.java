@@ -1,5 +1,6 @@
 package com.code.bull.commonutils.commonlib;
 
+import com.aventstack.extentreports.Status;
 import com.code.bull.driver.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +10,6 @@ import java.lang.invoke.MethodHandles;
 public class CommonLib extends Driver {
 
     private static final Logger log = LogManager.getLogger(MethodHandles.lookup().lookupClass().getSimpleName());
-
     /**
      * This method is used to print info message
      *
@@ -45,5 +45,15 @@ public class CommonLib extends Driver {
      */
     public static void pass(String s) {
         log.info(s);
+    }
+    /**
+     * This method is used to log the failure message into report
+     * @param message The Message
+     * @param requireScreenshot The screenshot True/False
+     */
+    public static void fail(String message, boolean requireScreenshot) {
+        log.error(message);
+        assertCheck.append(false);
+        reporter.showInExtentReport(Status.FAIL, message, requireScreenshot);
     }
 }

@@ -15,6 +15,13 @@ import java.util.concurrent.TimeUnit;
 public class BasePage extends Driver {
     static Wait<WebDriver> wait;
 
+    /**
+     * 3 types ke wait hote hai
+     * 1. implicit wait --> 5 sec ke liye hamesha rukega
+     * 2. explicit wait --> ek condition and max time
+     * 3. fluent wait --> ek condition and max time  + pooling time
+     */
+
     public BasePage(WebDriver driver) {
         Driver.driver = driver;
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -45,7 +52,9 @@ public class BasePage extends Driver {
     public static Boolean isDisplayed(By elementLocation) {
         CommonLib.info("Going to check if element is displayed or not");
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocation));
-        return driver.findElement(elementLocation).isDisplayed();
+        boolean displayed = driver.findElement(elementLocation).isDisplayed();
+        CommonLib.info("if element visible ? " + displayed);
+        return displayed;
     }
 
     /**

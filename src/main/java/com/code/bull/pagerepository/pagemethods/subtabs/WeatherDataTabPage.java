@@ -17,7 +17,7 @@ public class WeatherDataTabPage extends BasePage {
 
 
     public void enterCityName(String text) {
-        CommonLib.info("Going to enter the " + text + "text in search box");
+        CommonLib.info("Going to enter the " + text + " text in search box");
         enterText(tabElements.searchBox, text, "Not able to enter text in enterCityName method");
     }
 

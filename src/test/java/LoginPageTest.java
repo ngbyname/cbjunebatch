@@ -10,9 +10,11 @@ public class LoginPageTest extends Driver {
 
     /**
      * 1. script is not working with headless -true mode
-     * 2. Logger is not printing in console
+     * 2. console log - Done
      * 3. default report is not visible
      * 4. Code walkthrough and definition
+     *
+     * Assignment - what is extent report
      */
 
     @Test(priority = 1)

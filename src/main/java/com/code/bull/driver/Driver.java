@@ -1,9 +1,13 @@
 package com.code.bull.driver;
 
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.code.bull.commonutils.applicationutils.constants.ApplicationConstants;
 import com.code.bull.commonutils.applicationutils.constants.ConstantUtils;
 import com.code.bull.commonutils.commonlib.CommonLib;
+import com.code.bull.commonutils.extentreports.ExtentReport;
 import com.code.bull.pagerepository.pagemethods.common.PageCollections;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +31,11 @@ public class Driver {
     public static ConstantUtils constants = ConstantUtils.getInstance();
     public static PageCollections pages;
     public static StringBuilder assertCheck;
+    public static ExtentTest test;
+    public static ExtentReports extent;
+    public static ExtentSparkReporter spark;
+    public static final StringBuilder TESTCASE_DESCRIPTION_BUILDER = new StringBuilder(); // FOR ADDING TESTCASE DESCRIPTION IN EXTNT REPORTS
+    public static final ExtentReport reporter = new ExtentReport();
 
     @BeforeSuite(alwaysRun = true)
     public void setup() {
@@ -50,6 +59,7 @@ public class Driver {
 
     @AfterSuite
     public void closeSetup() {
+        CommonLib.info("Going to close all browser instances");
         driver.close();
         if (driver != null) {
             driver.quit();
@@ -61,6 +71,7 @@ public class Driver {
      * This method is used to set the env
      */
     private void envSetup() {
+        CommonLib.info("Going to setup env setup");
 
         BASE_URL = constants.getValue(ApplicationConstants.BASE_URL);
 
@@ -77,6 +88,7 @@ public class Driver {
 
     private void browser() {
         try {
+            CommonLib.info("Going to setup browser and is :-" + browser);
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
@@ -97,9 +109,10 @@ public class Driver {
     }
 
     private void browserCapabilities() {
+        CommonLib.info("Going to setup browser capabilities");
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("window-size=1792,1120");
-        options.setHeadless(true);
+        options.setHeadless(false);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
@@ -108,6 +121,7 @@ public class Driver {
      * This method will initialize the page collection class
      */
     private void initializePage() {
+        CommonLib.info("Going to initialize Page Class");
         pages = new PageCollections(driver);
     }
 
@@ -117,6 +131,7 @@ public class Driver {
      * @param baseUrl the website url
      */
     public void openBaseUrl(String baseUrl) {
+        CommonLib.info("Going to open website base url and is :-" + baseUrl);
         driver.get(baseUrl);
     }
 
