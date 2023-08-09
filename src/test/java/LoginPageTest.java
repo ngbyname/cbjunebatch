@@ -11,13 +11,13 @@ public class LoginPageTest extends Driver {
     /**
      * 1. script is not working with headless -true mode
      * 2. console log - Done
-     * 3. default report is not visible
+     * 3. default report is not visible --> instead of this we will implement Extent Report
      * 4. Code walkthrough and definition
      *
      * Assignment - what is extent report
      */
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = {"RegressionTest"})
     public void testCityWeather() {
         try {
             pages.getLandingPage().clickCookiesModal();

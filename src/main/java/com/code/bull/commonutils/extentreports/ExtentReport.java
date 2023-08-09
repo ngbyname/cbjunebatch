@@ -29,7 +29,7 @@ public class ExtentReport extends Driver {
     public static void startTest(String testName, String methodName) {
         test = extent.createTest(testName + " :: " + methodName);
         test.assignCategory(testName);
-        test.assignAuthor("Airtel-Africa");
+        test.assignAuthor("Code Bull");
     }
 
     /**

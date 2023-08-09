@@ -10,12 +10,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class ConstantUtils {
+import static com.code.bull.driver.Driver.USER_DIR;
 
+public class ConstantUtils {
+    private static final String USER_DIR = System.getProperty("user.dir");
     private static ConstantUtils constants;
     private final Properties prop;
     private static String env = System.getProperty("env");
-    private static final String USER_DIR = System.getProperty("user.dir");
     private static final String RESOURCE_FILE_PATH = USER_DIR + "/src/main/resources/properties/";
     private static final String COMMON_FILE_PATH = RESOURCE_FILE_PATH + "common.properties";
     private static final String MSG_FILE_PATH = RESOURCE_FILE_PATH + "message.properties";
