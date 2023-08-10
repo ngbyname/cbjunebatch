@@ -171,7 +171,7 @@ public class ExtentReport extends Driver {
             screenshot = extent.addScreenShot(driver);
             test.log(logStatus, MediaEntityBuilder.createScreenCaptureFromPath(screenshot).build());
         } catch (Exception e) {
-            CommonLib.error("ERROR INSIDE METHOD - attachScreenshotAsPerExecutionType" + BREAK_LINE + e.getMessage());
+            CommonLib.error("ERROR INSIDE METHOD - attachScreenshotAsPerExecutionType" + BREAK_LINE + e.getMessage(),true);
         }
     }
 }

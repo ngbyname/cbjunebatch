@@ -39,7 +39,7 @@ public class BasePage extends Driver {
             CommonLib.info("Going to click on : " + elementLocation);
             driver.findElement(elementLocation).click();
         } else {
-            CommonLib.error("Web element :-" + elementLocation + " is NOT displayed");
+            CommonLib.error("Web element :-" + elementLocation + " is NOT displayed",true);
         }
     }
 
@@ -69,7 +69,7 @@ public class BasePage extends Driver {
             driver.findElement(elementLocation).clear();
             driver.findElement(elementLocation).sendKeys(textToEnter);
         } else {
-            CommonLib.error(failMsg);
+            CommonLib.error(failMsg,true);
         }
     }
 

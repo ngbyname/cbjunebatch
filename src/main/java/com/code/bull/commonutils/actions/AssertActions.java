@@ -19,30 +19,39 @@ public class AssertActions {
     public static Boolean assertEqualBoolean(boolean actual, boolean expected, String pass, String fail) {
         assertFlag = false;
         try {
-            Assert.assertEquals(actual, expected, fail);
+            Assert.assertNotNull(actual, pass);
+            CommonLib.pass(pass);
             assertFlag = true;
         } catch (Exception e) {
-            CommonLib.error(e.getMessage());
+            CommonLib.error(e.getMessage(),false);
         }
         return assertFlag;
     }
 
     /**
-     * This method is used to assert two String values
+     * Verify.
      *
-     * @param actual   the actual value
-     * @param expected the expected value
-     * @param pass     the pass description
-     * @param fail     the fail description
-     * @return boolean
+     * @param actual   the actual
+     * @param expected the expected
      */
-    public static Boolean assertEqualString(String actual, String expected, String pass, String fail) {
+    public static Boolean assertEqualStringType(String actual, String expected, String passMessage, String failMessage) {
+        return assertEqualStringType(actual, expected, passMessage, failMessage, true);
+    }
+
+    public static Boolean assertEqualStringType(String actual, String expected, String passMessage, String failMessage, boolean requiredScreenshot) {
         assertFlag = false;
+        boolean shouldCaptureScreenshot = true;
         try {
-            Assert.assertEquals(actual, expected, fail);
+            if (!requiredScreenshot) {
+                shouldCaptureScreenshot = false;
+            }
+            if (actual.equalsIgnoreCase("unable to fetch data"))
+                CommonLib.fail("Please check downstream API and raise issue ", true);
+            Assert.assertEquals(actual, expected);
+            CommonLib.pass(passMessage);
             assertFlag = true;
-        } catch (Exception e) {
-            CommonLib.error(e.getMessage());
+        } catch (Exception | AssertionError ex) {
+            CommonLib.fail(ex.getMessage() + failMessage, shouldCaptureScreenshot);
         }
         return assertFlag;
     }
@@ -62,7 +71,7 @@ public class AssertActions {
             Assert.assertEquals(actual, expected, pass);
             assertFlag = true;
         } catch (Exception e) {
-            CommonLib.error(fail + " " + e.getMessage());
+            CommonLib.error(fail + " " + e.getMessage(),false);
         }
         return assertFlag;
     }
@@ -72,12 +81,14 @@ public class AssertActions {
      *
      * @param assertCheck all assertions status
      */
-    public static void checkAllAssertCheck(StringBuilder assertCheck) {
+    public static boolean checkAllAssertCheck(StringBuilder assertCheck) {
         if (assertCheck.isEmpty() || assertCheck.toString().contains("false")) {
-            Assert.fail();
+            Assert.fail("Some Assertions got Failed");
+            return true;
         } else {
             CommonLib.pass("All assertion verified and are passed");
         }
+        return false;
     }
 
 

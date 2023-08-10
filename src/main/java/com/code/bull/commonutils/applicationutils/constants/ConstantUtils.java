@@ -31,14 +31,14 @@ public class ConstantUtils {
                 inFile = new Scanner(new FileReader(file));
                 inFile.next();
             } catch (FileNotFoundException ex) {
-                CommonLib.error(ex.getMessage());
+                CommonLib.error(ex.getMessage(),false);
 
             }
             try {
                 InputStream inputStream = Files.newInputStream(Paths.get(file));
                 prop.load(inputStream);
             } catch (IOException ex) {
-                CommonLib.error(ex.getMessage());
+                CommonLib.error(ex.getMessage(),false);
             }
         });
     }

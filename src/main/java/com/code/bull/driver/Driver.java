@@ -6,10 +6,11 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.code.bull.commonutils.applicationutils.constants.ApplicationConstants;
 import com.code.bull.commonutils.applicationutils.constants.ConstantUtils;
-import com.code.bull.commonutils.commonlib.CommonLib;
 import com.code.bull.commonutils.extentreports.ExtentReport;
 import com.code.bull.pagerepository.pagemethods.common.PageCollections;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,6 +19,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.lang.invoke.MethodHandles;
 import java.time.*;
 
 public class Driver {
@@ -45,6 +47,8 @@ public class Driver {
     public static final String HTML_FILE_PATH = USER_DIR + "/src/main/resources/htmlreport/" + SUITE_TYPE.toLowerCase() + "-" + env.toLowerCase() + PATH_DELIMITER;
     public static String currentClassName;
     public static String currentTestCaseName;
+    private static final Logger log = LogManager.getLogger(MethodHandles.lookup().lookupClass().getSimpleName());
+
 
     @BeforeSuite(alwaysRun = true)
     public void setup(ITestContext tr) {
@@ -58,7 +62,7 @@ public class Driver {
         try {
             initializePage();
         } catch (Exception e) {
-            CommonLib.error(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 
@@ -69,7 +73,7 @@ public class Driver {
             ExtentReport.startTest(currentClassName, currentTestCaseName);
             assertCheck = new StringBuilder(); // @ THIS WILL EMPTY ASSERT STRING-BUILDER BEFORE EACH TEST
         } catch (Exception ex) {
-            CommonLib.error(ex.getMessage());
+            log.error(ex.getMessage());
         }
     }
 
@@ -78,7 +82,7 @@ public class Driver {
         try {
             ExtentReport.endTest();
         } catch (Exception e) {
-            CommonLib.error(e.getMessage());
+            log.error(e.getMessage());
         }
     }
     @AfterClass(alwaysRun = true)
@@ -86,13 +90,13 @@ public class Driver {
         try {
             ExtentReport.endTest();
         } catch (Exception e) {
-            CommonLib.error(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 
     @AfterSuite(alwaysRun = true)
     public void closeSetup() {
-        CommonLib.info("Going to close all browser instances");
+        log.info("Going to close all browser instances");
         ExtentReport.endTest();
         driver.close();
         if (driver != null) {
@@ -105,7 +109,7 @@ public class Driver {
      * This method is used to set the env
      */
     private void envSetup() {
-        CommonLib.info("Going to setup env setup");
+        log.info("Going to setup env setup");
 
         BASE_URL = constants.getValue(ApplicationConstants.BASE_URL);
 
@@ -122,7 +126,7 @@ public class Driver {
 
     private void browser() {
         try {
-            CommonLib.info("Going to setup browser and is :-" + browser);
+            log.info("Going to setup browser and is :-" + browser);
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
@@ -138,14 +142,14 @@ public class Driver {
                     break;
             }
         } catch (Exception ex) {
-            CommonLib.error(ex.getMessage());
+            log.error(ex.getMessage(),false);
         }
     }
 
     private void browserCapabilities() {
-        CommonLib.info("Going to setup browser capabilities");
+        log.info("Going to setup browser capabilities");
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("window-size=1792,1120");
+        options.addArguments("window-size=1792,1120");
         options.setHeadless(true);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
@@ -155,7 +159,7 @@ public class Driver {
      * This method will initialize the page collection class
      */
     private void initializePage() {
-        CommonLib.info("Going to initialize Page Class");
+        log.info("Going to initialize Page Class");
         pages = new PageCollections(driver);
     }
 
@@ -165,7 +169,7 @@ public class Driver {
      * @param baseUrl the website url
      */
     public void openBaseUrl(String baseUrl) {
-        CommonLib.info("Going to open website base url and is :-" + baseUrl);
+        log.info("Going to open website base url and is :-" + baseUrl);
         driver.get(baseUrl);
     }
 
@@ -193,7 +197,7 @@ public class Driver {
             extent.setSystemInfo("Language Selected ", "English");
             extent.setSystemInfo("Suite Type", SUITE_TYPE.toUpperCase());
         } catch (Exception ex) {
-            CommonLib.fail("Exception in Method - reportConfigureBase " + ex.getMessage(), false);
+            log.error("Exception in Method - reportConfigureBase " + ex.getMessage());
         }
     }
 

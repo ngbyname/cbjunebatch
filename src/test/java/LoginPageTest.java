@@ -9,10 +9,11 @@ public class LoginPageTest extends Driver {
     private static final String CITY_NAME = constants.getValue(ApplicationConstants.CITY_NAME);
 
     /**
-     * 1. script is not working with headless -true mode
+     * 1. script is not working with headless -true mode - Done
      * 2. console log - Done
      * 3. default report is not visible --> instead of this we will implement Extent Report
      * 4. Code walkthrough and definition
+     * 5. according to your suite type we need to define our xml and need to grouping as well
      *
      * Assignment - what is extent report
      */
@@ -22,18 +23,18 @@ public class LoginPageTest extends Driver {
         try {
             pages.getLandingPage().clickCookiesModal();
             String currentUrl = pages.getLandingPage().getUrl();
-            assertCheck.append(AssertActions.assertEqualString(currentUrl, "https://www.visualcrossing.com/", "Landing Page Opened Successfully", "Landing Page NOT Opened Successfully " + currentUrl));
+            assertCheck.append(AssertActions.assertEqualStringType(currentUrl, "https://www.visualcrossing.com/", "Landing Page Opened Successfully", "Landing Page NOT Opened Successfully " + currentUrl));
             pages.getLandingPage().clickWeatherTab();
             String currentUrl1 = pages.getLandingPage().getUrl();
-            assertCheck.append(AssertActions.assertEqualString(currentUrl1, "https://www.visualcrossing.com/weather-data", "Weather Tab Page Opened Successfully", "Weather Tab Page NOT Opened Successfully " + currentUrl1));
+            assertCheck.append(AssertActions.assertEqualStringType(currentUrl1, "https://www.visualcrossing.com/weather-data/", "Weather Tab Page Opened Successfully", "Weather Tab Page NOT Opened Successfully " + currentUrl1));
             pages.getWeatherDataPage().enterCityName(CITY_NAME);
             pages.getWeatherDataPage().clickSearchBtn();
             String currentUrl2 = pages.getLandingPage().getUrl();
             boolean isCityPresent = currentUrl2.contains(CITY_NAME);
             assertCheck.append(AssertActions.assertEqualBoolean(isCityPresent, true, "Your " + CITY_NAME + " City's weather data shown Successfully", "Your " + CITY_NAME + " City's weather data NOT shown Successfully " + currentUrl2));
-            AssertActions.checkAllAssertCheck(assertCheck);
         } catch (Exception e) {
-            CommonLib.error(e.getMessage());
+            CommonLib.error(e.getMessage(), true);
         }
+        AssertActions.checkAllAssertCheck(assertCheck);
     }
 }
