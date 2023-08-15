@@ -14,6 +14,6 @@ import org.openqa.selenium.By;
 public class LandingPageElements {
 
     public static final By cookiesModal = By.xpath("//button[text()='Accept all cookies']");
-    public static final By weatherDataTab = By.xpath("//div[@id='navbarNav']//a[text()='Weather Data']");
+    public  final By weatherDataTab = By.xpath("//div[@id='navbarNav']//a[text()='Weather Data']");
 
 }

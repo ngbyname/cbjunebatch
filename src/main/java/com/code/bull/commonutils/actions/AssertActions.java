@@ -23,7 +23,7 @@ public class AssertActions {
             CommonLib.pass(pass);
             assertFlag = true;
         } catch (Exception e) {
-            CommonLib.error(e.getMessage(),false);
+            CommonLib.error(e.getMessage(), false);
         }
         return assertFlag;
     }
@@ -71,7 +71,7 @@ public class AssertActions {
             Assert.assertEquals(actual, expected, pass);
             assertFlag = true;
         } catch (Exception e) {
-            CommonLib.error(fail + " " + e.getMessage(),false);
+            CommonLib.error(fail + " " + e.getMessage(), false);
         }
         return assertFlag;
     }
@@ -84,6 +84,7 @@ public class AssertActions {
     public static boolean checkAllAssertCheck(StringBuilder assertCheck) {
         if (assertCheck.isEmpty() || assertCheck.toString().contains("false")) {
             Assert.fail("Some Assertions got Failed");
+            CommonLib.fail("Some Assertions got Failed", false);
             return true;
         } else {
             CommonLib.pass("All assertion verified and are passed");

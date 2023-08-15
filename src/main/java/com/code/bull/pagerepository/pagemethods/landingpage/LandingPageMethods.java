@@ -20,7 +20,7 @@ public class LandingPageMethods extends BasePage {
      */
     public void clickCookiesModal() {
         CommonLib.info("Going to click on cookies Modal");
-        click(pageElements.cookiesModal);
+        click(LandingPageElements.cookiesModal);
     }
 
     /**
