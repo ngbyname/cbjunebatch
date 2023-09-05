@@ -2,7 +2,6 @@ import com.code.bull.commonutils.actions.AssertActions;
 import com.code.bull.commonutils.applicationutils.constants.ApplicationConstants;
 import com.code.bull.commonutils.commonlib.CommonLib;
 import com.code.bull.driver.Driver;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginPageTest extends Driver {
@@ -51,7 +50,7 @@ public class LoginPageTest extends Driver {
             pages.getWeatherDataPage().clickSearchBtn();
             String currentUrl2 = pages.getLandingPage().getUrl();
             boolean isCityPresent = currentUrl2.contains(CITY_NAME);
-            assertCheck.append(AssertActions.assertEqualBoolean(isCityPresent, true, "Your " + CITY_NAME + " City's weather data shown Successfully", "Your " + CITY_NAME + " City's weather data NOT shown Successfully " + currentUrl2));
+            assertCheck.append(AssertActions.assertEqualBoolean(isCityPresent, true, "Your " + CITY_NAME + " City's weather data shown Successfully"));
         } catch (Exception e) {
             CommonLib.error("Error in testCityWeather method" + e.getMessage(), true);
         }
