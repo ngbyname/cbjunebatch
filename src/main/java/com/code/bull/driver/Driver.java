@@ -187,7 +187,7 @@ public class Driver {
             } else if (currentClassName.toLowerCase().contains("test")) {
                 reportTitle = "_Scenarios_";
             }
-            MODIFIED_HTML_FILE_PATH = HTML_FILE_PATH + SUITE_TYPE + reportTitle + dateTime + ".html";
+            MODIFIED_HTML_FILE_PATH = HTML_FILE_PATH + SUITE_TYPE + reportTitle  + ".html";
             browser = constants.getValue(ApplicationConstants.WEB_BROWSER);
             extent = new ExtentReports();
             spark = new ExtentSparkReporter(MODIFIED_HTML_FILE_PATH);

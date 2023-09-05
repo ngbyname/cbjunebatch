@@ -13,10 +13,9 @@ public class AssertActions {
      * @param actual   the actual value
      * @param expected the expected value
      * @param pass     the pass description
-     * @param fail     the fail description
      * @return boolean
      */
-    public static Boolean assertEqualBoolean(boolean actual, boolean expected, String pass, String fail) {
+    public static Boolean assertEqualBoolean(boolean actual, boolean expected, String pass) {
         assertFlag = false;
         try {
             Assert.assertNotNull(actual, pass);
