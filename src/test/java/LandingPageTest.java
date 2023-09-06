@@ -1,7 +1,6 @@
 import com.code.bull.commonutils.actions.AssertActions;
 import com.code.bull.commonutils.commonlib.CommonLib;
 import com.code.bull.driver.Driver;
-import io.opentelemetry.sdk.trace.internal.data.ExceptionEventData;
 import org.testng.annotations.Test;
 
 public class LandingPageTest extends Driver {
@@ -44,6 +43,7 @@ public class LandingPageTest extends Driver {
         try {
             boolean testIsPricingTabVisible = pages.getLandingPage().isPricingTabVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsPricingTabVisible, true, "pricing tab is visible successfully, pricing tab is not visible"));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -53,6 +53,7 @@ public class LandingPageTest extends Driver {
         try {
             boolean testIsApiDocsTabVisible = pages.getLandingPage().isApiDocsTabVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsApiDocsTabVisible, true, "api docs tab is visible successfully, api docs tab is not visible"));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -62,6 +63,7 @@ public class LandingPageTest extends Driver {
         try {
             boolean testIsSearchDocsBoxVisible = pages.getLandingPage().isSearchDocsBoxVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsSearchDocsBoxVisible, true,"search docs box is visible successfully, search docs box is not visible"));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(),true);
         }
@@ -69,8 +71,9 @@ public class LandingPageTest extends Driver {
     @Test(priority = 7, description = "To verify that sign in tab is visible")
     public void testIsSignInTabVisible(){
         try{
-            boolean testIsSignInTabVisible = pages.getLandingPage().isSignInTabVisible();
+            boolean testIsSignInTabVisible = pages.getLandingPage().isSignInBtnVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsSignInTabVisible, true, "sign in tab is visible, sign in tab is not visible"));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -78,8 +81,9 @@ public class LandingPageTest extends Driver {
     @Test(priority = 8, description = "To verify sign up tab is visible")
     public void testIsSignUpTabVisible(){
         try{
-            boolean testIsSignUpTabVisible = pages.getLandingPage().isSignUpTabVisible();
+            boolean testIsSignUpTabVisible = pages.getLandingPage().isSignUpBtnVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsSignUpTabVisible, true, "sign up tab is visible successfully,sign up tab is  not visible "));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -89,6 +93,7 @@ public class LandingPageTest extends Driver {
         try{
             boolean testIsWeatherAndApiHeaderVisible = pages.getLandingPage().isWeatherDataAndApiHeaderVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsWeatherAndApiHeaderVisible, true, "weather data and api header is visible successfully, weather data and api header is not visible"));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -98,6 +103,7 @@ public class LandingPageTest extends Driver {
         try {
             boolean testisGlobalForecastAndHistoryDataHeaderVisible = pages.getLandingPage().isGlobalForecastAndHistoryDataHeaderVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testisGlobalForecastAndHistoryDataHeaderVisible, true, "global forecast and history data header is visible successfully, global forecast and history data header is not visible "));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -107,6 +113,7 @@ public class LandingPageTest extends Driver {
         try {
             boolean testIsDownloadDataHeaderVisible = pages.getLandingPage().isDownloadDataHeaderVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsDownloadDataHeaderVisible, true, "download data header is visible successfully, download data header is not visible "));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -116,6 +123,7 @@ public class LandingPageTest extends Driver {
         try{
             boolean testIsEnterLocationTextBoxVisible = pages.getLandingPage().isEnterLocationTextBoxVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsEnterLocationTextBoxVisible, true, "enter location text box is visible successfully, enter location text box is not visible"));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }
@@ -125,6 +133,7 @@ public class LandingPageTest extends Driver {
         try {
             boolean testIsEnterLocationSearchIconVisible = pages.getLandingPage().isEnterLocationSearchIconVisible();
             assertCheck.append(AssertActions.assertEqualBoolean(testIsEnterLocationSearchIconVisible, true, "search icon is visible successfully, searrch icon is not visible"));
+            AssertActions.checkAllAssertCheck(assertCheck);
         }catch (Exception e){
             CommonLib.error(e.getMessage(), true);
         }

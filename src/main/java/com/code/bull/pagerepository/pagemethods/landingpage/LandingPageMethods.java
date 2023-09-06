@@ -42,8 +42,7 @@ public class LandingPageMethods extends BasePage {
      * @return
      */
     public boolean isWeatherTabVisible() {
-        Boolean displayed = isDisplayed(pageElements.weatherDataTab);
-        return displayed;
+        return isDisplayed(pageElements.weatherDataTab);
     }
 
     public void clickWeatherApiTab() {
@@ -57,8 +56,7 @@ public class LandingPageMethods extends BasePage {
      * @return
      */
     public boolean isWeatherApiTabVisible() {
-        Boolean displayed = isDisplayed(pageElements.weatherApiTab);
-        return displayed;
+        return isDisplayed(pageElements.weatherApiTab);
     }
 
     public void clickQueryBuilderTab() {
@@ -70,8 +68,7 @@ public class LandingPageMethods extends BasePage {
      * This method is used to check query builder is visible or not
      */
     public boolean isQueryBuilderTabVisible() {
-        Boolean displayed = isDisplayed(pageElements.queryBuilderTab);
-        return displayed;
+        return isDisplayed(pageElements.queryBuilderTab);
     }
     public void clickPricingTab(){
         CommonLib.info("Going to click on pricing tab");
@@ -83,8 +80,7 @@ public class LandingPageMethods extends BasePage {
      * @return
      */
     public boolean isPricingTabVisible(){
-        Boolean displayed = isDisplayed(pageElements.pricingTab);
-        return displayed;
+        return isDisplayed(pageElements.pricingTab);
     }
     public void clickApiDocsTab(){
         CommonLib.info("Going to click on Api Docs tab");
@@ -96,8 +92,7 @@ public class LandingPageMethods extends BasePage {
      * @return
      */
     public boolean isApiDocsTabVisible(){
-      Boolean displayed = isDisplayed(pageElements.apiDocsTab);
-      return displayed;
+        return isDisplayed(pageElements.apiDocsTab);
     }
 
     /**
@@ -108,8 +103,7 @@ public class LandingPageMethods extends BasePage {
         click(pageElements.searchDocsBox);
     }
     public boolean isSearchDocsBoxVisible(){
-        Boolean displayed = isDisplayed(pageElements.searchDocsBox);
-        return displayed;
+        return isDisplayed(pageElements.searchDocsBox);
     }
 
     /**
@@ -120,21 +114,19 @@ public class LandingPageMethods extends BasePage {
         CommonLib.info("Going to click on sign in tab");
         click(pageElements.signInTab);
     }
-    public boolean isSignInTabVisible(){
-        Boolean displayed = isDisplayed(pageElements.signInTab);
-        return displayed;
+    public boolean isSignInBtnVisible(){
+        return isDisplayed(pageElements.signInTab);
     }
 
     /**
      * This method is used to check sign up tab is visible
      */
-    public void signUpTab(){
+    public void signUpBtn(){
         CommonLib.info("Going to click on sign up tab");
         click(pageElements.signUpTab);
     }
-    public boolean isSignUpTabVisible(){
-        Boolean displayed = isDisplayed(pageElements.signUpTab);
-        return displayed;
+    public boolean isSignUpBtnVisible(){
+        return isDisplayed(pageElements.signUpTab);
     }
 
     /**
@@ -145,8 +137,7 @@ public class LandingPageMethods extends BasePage {
         click(pageElements.weatherDataAndApiHeader);
     }
     public boolean isWeatherDataAndApiHeaderVisible(){
-        Boolean displayed = isDisplayed(pageElements.weatherDataAndApiHeader);
-        return displayed;
+        return isDisplayed(pageElements.weatherDataAndApiHeader);
     }
 
     /**
@@ -157,8 +148,7 @@ public class LandingPageMethods extends BasePage {
         click(pageElements.globalForecastAndHistoryDataHeader);
     }
     public boolean isGlobalForecastAndHistoryDataHeaderVisible(){
-        Boolean displayed = isDisplayed(pageElements.globalForecastAndHistoryDataHeader);
-        return displayed;
+        return isDisplayed(pageElements.globalForecastAndHistoryDataHeader);
     }
 
     /**
@@ -169,8 +159,7 @@ public class LandingPageMethods extends BasePage {
         click(pageElements.downloadDataHeader);
     }
     public boolean isDownloadDataHeaderVisible(){
-        Boolean displayed = isDisplayed(pageElements.downloadDataHeader);
-        return displayed;
+        return isDisplayed(pageElements.downloadDataHeader);
     }
 
     /**
@@ -181,8 +170,7 @@ public class LandingPageMethods extends BasePage {
         click(pageElements.enterLocationTextBox);
     }
     public boolean isEnterLocationTextBoxVisible(){
-        Boolean displayed = isDisplayed(pageElements.enterLocationTextBox);
-        return displayed;
+        return isDisplayed(pageElements.enterLocationTextBox);
     }
 
     /**
@@ -193,16 +181,14 @@ public class LandingPageMethods extends BasePage {
         click(pageElements.enterLocationSearchIcon);
     }
     public boolean isEnterLocationSearchIconVisible(){
-        Boolean displayed = isDisplayed(pageElements.enterLocationSearchIcon);
-        return displayed;
+        return isDisplayed(pageElements.enterLocationSearchIcon);
     }
     public void dashBoardAndToolsHeader(){
         CommonLib.info("Going to click on dashboard and tools header");
         click(pageElements.dashBoardAndToolsHeader);
     }
     public boolean isDashBoardAndToolsHeaderVisible(){
-        Boolean displayed = isDisplayed(pageElements.dashBoardAndToolsHeader);
-        return displayed;
+        return isDisplayed(pageElements.dashBoardAndToolsHeader);
     }
 
 
